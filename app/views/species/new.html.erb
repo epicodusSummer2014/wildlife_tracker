@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<h1>Create New Species</h1>
+
+<% if @species.errors.any? %>
+  <h3>Please fix these errors:</h3>
+  <ul>
+    <% @task.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form action="/species" method="post" >
+  <label for= "name">Name of Species</label>
+  <input id= "name" name= "name" type= "text">
+  <button>Add Species</button>
+</form>

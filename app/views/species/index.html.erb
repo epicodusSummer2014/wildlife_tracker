@@ -1,0 +1,8 @@
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<h1>Species</h1>
+  <ul>
+    <% @specieses.each do |species| %>
+      <li><a href='/species/<%= species.id %>'><%= species.name %></a></li>
+    <% end %>
+  </ul>
