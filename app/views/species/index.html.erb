@@ -3,6 +3,8 @@
 <h1>Species</h1>
   <ul>
     <% @specieses.each do |species| %>
-      <li><a href='/species/<%= species.id %>'><%= species.name %></a></li>
+      <li><a href='/<%= species.id %>'><%= species.name %></a></li>
     <% end %>
   </ul>
+
+  <a href='/new'>Create a new Species</a>

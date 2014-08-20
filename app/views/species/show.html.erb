@@ -1,7 +1,9 @@
 <h1> <%= @species.name %></h1>
 
 
-<form method='post' action='/species/<%= @species.id %>/'>
+<form method='post' action='/<%= @species.id %>/'>
   <input name="_method" type="hidden" value="delete">
   <button>Delete</button>
 </form>
+
+<a href="/<%= @species.id %>/edit"><button>Edit</button></a>
