@@ -13,7 +13,7 @@ class SpeciesController < ActionController::Base
   def create
     @species = Species.new(:name => params[:name])
     if @species.save
-      redirect_to('#{@species.id}')
+      redirect_to("/#{@species.id}")
     else
       render('new.html.erb')
     end
@@ -21,6 +21,7 @@ class SpeciesController < ActionController::Base
 
   def show
     @species = Species.find(params[:id])
+    @sightings = Sighting.where(species_id: @species.id)
     render('show.html.erb')
   end
 

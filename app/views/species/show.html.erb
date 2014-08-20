@@ -1,9 +1,27 @@
 <h1> <%= @species.name %></h1>
 
+<h3>Sightings:<h3>
+<ul>
+  <% @sightings.each do |sighting| %>
+    <a href='/sighting/<%= sighting.id %>'><li>date: <%= sighting.date%>  latitude: <%= sighting.latitude %>  longitude <%= sighting.longitude %></li></a>
+  <% end %>
+</ul>
+
+<form action="/<%= @species.id %>/" method="post" >
+  <label for= "date">Date</label>
+  <input id= "date" name= "sighting[date]" type= "date">
+  <label for= "latitude">Latitude</label>
+  <input id= "latitude" name= "sighting[latitude]" type= "text">
+  <label for= "longitude">Longitude</label>
+  <input id= "longitude" name= "sighting[longitude]" type= "text">
+  <button>Add Sighting</button>
+</form>
 
 <form method='post' action='/<%= @species.id %>/'>
   <input name="_method" type="hidden" value="delete">
   <button>Delete</button>
 </form>
 
-<a href="/<%= @species.id %>/edit"><button>Edit</button></a>
+<p><a href="/<%= @species.id %>/edit"><button>Edit</button></a></p>
+
+<p><a href="/"><button>Return To Species</button></a></p>

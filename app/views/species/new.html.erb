@@ -5,7 +5,7 @@
 <% if @species.errors.any? %>
   <h3>Please fix these errors:</h3>
   <ul>
-    <% @task.errors.full_messages.each do |message| %>
+    <% @species.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
   </ul>
