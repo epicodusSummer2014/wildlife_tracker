@@ -8,12 +8,14 @@ class SightingsController < ActionController::Base
   end
 
   def show
+    @regions = Region.all
     @sighting = Sighting.find(params[:id])
     @species = Species.find(@sighting.species_id)
     render('/sighting/show.html.erb')
   end
 
   def update
+    @regions = Region.all
     @sighting = Sighting.find(params[:id])
     @species = Species.find(@sighting.species_id)
     @sighting.update(params[:sighting])
@@ -25,6 +27,11 @@ class SightingsController < ActionController::Base
     @species = Species.find(@sighting.species_id)
     @sighting.delete
     redirect_to("/#{@species.id}")
+  end
+
+  def report
+    @sightings = Sighting.all
+    render('/reports/sighting_report.html.erb')
   end
 end
 

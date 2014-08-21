@@ -20,6 +20,7 @@ class SpeciesController < ActionController::Base
   end
 
   def show
+    @regions = Region.all
     @species = Species.find(params[:id])
     @sightings = Sighting.where(species_id: @species.id)
     render('show.html.erb')

@@ -1,0 +1,15 @@
+<h1> Regions </h1>
+
+<ul>
+  <% @regions.each do |region| %>
+    <a href='/regions/<%= region.id %>'><li><%= region.name %></li></a>
+  <% end %>
+</ul>
+
+<form action="/regions" method="post" >
+  <label for= "name">Name of Region</label>
+  <input id= "name" name= "region[name]" type= "text">
+  <button>Add Region</button>
+</form>
+
+<a href='/'><button>Back to species</button></a>

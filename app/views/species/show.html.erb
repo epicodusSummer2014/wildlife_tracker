@@ -3,23 +3,36 @@
 <h3>Sightings:<h3>
 <ul>
   <% @sightings.each do |sighting| %>
-    <a href='/sighting/<%= sighting.id %>'><li>date: <%= sighting.date%>  latitude: <%= sighting.latitude %>  longitude <%= sighting.longitude %></li></a>
+    <a href='/sighting/<%= sighting.id %>'><li>date: <%= sighting.date%>  latitude: <%= sighting.latitude %>  longitude <%= sighting.longitude %> region: <%= sighting.region.name %></li></a>
   <% end %>
 </ul>
 
-<form action="/<%= @species.id %>/" method="post" >
+<form id = "species" action="/<%= @species.id %>/" method="post" >
   <label for= "date">Date</label>
   <input id= "date" name= "sighting[date]" type= "date">
   <label for= "latitude">Latitude</label>
   <input id= "latitude" name= "sighting[latitude]" type= "text">
   <label for= "longitude">Longitude</label>
   <input id= "longitude" name= "sighting[longitude]" type= "text">
+  <select form="species" name="sighting[region_id]">
+    <% @regions.each do |region| %>
+      <option value ="<%=region.id %>"><%=region.name %></option>
+    <% end %>
+  </select>
   <button>Add Sighting</button>
 </form>
 
 <form method='post' action='/<%= @species.id %>/'>
   <input name="_method" type="hidden" value="delete">
   <button>Delete</button>
+</form>
+
+<form action="/sightings" method="get">
+  <label for="sightings_start_date">Start date</label>
+  <input id="sightings_start_date" name="sightings[start_date]" type="text">
+  <label for="sightings_end_date">End date</label>
+  <input id="sightings_end_date" name="sightings[end_date]" type="text">
+  <button>Run report</button>
 </form>
 
 <p><a href="/<%= @species.id %>/edit"><button>Edit</button></a></p>

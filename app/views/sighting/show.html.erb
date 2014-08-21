@@ -1,12 +1,13 @@
 <h1> <%= @species.name %> </h1>
 
-<p><%= @sighting.date %></p>
-<p><%= @sighting.latitude %></p>
-<p><%= @sighting.longitude %></p>
+<p>Date: <%= @sighting.date %></p>
+<p>Latitude: <%= @sighting.latitude %></p>
+<p>Longitude: <%= @sighting.longitude %></p>
+<p>Region: <%= @sighting.region.name %></p>
 
 
 <p>UPDATE SIGHTING:</p>
-<form action="/sighting/<%= @sighting.id %>" method="post" >
+<form id= "species" action="/sighting/<%= @sighting.id %>" method="post" >
   <input name="_method" type="hidden" value="patch">
   <label for= "date">Date</label>
   <input id= "date" name= "sighting[date]" type= "date">
@@ -14,6 +15,11 @@
   <input id= "latitude" name= "sighting[latitude]" type= "text">
   <label for= "longitude">Longitude</label>
   <input id= "longitude" name= "sighting[longitude]" type= "text">
+  <select form="species" name="sighting[region_id]">
+    <% @regions.each do |region| %>
+      <option value ="<%=region.id %>"><%=region.name %></option>
+    <% end %>
+  </select>
   <button>Update Sighting</button>
 </form>
 
